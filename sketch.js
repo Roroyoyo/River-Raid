@@ -17,7 +17,7 @@ let fuelMeter = 1; // 1 = full, 0 = empty
 function preload() {
   planeImg = loadImage('assets/Plane.png')
   heliImg = loadImage('assets/helicopter.gif'); // 2. Load the image
-  boatImg = loadImage('assets/Boat.png');
+  boatImg = loadImage('assets/boat.png');
   fuelImg = loadImage('assets/Fuel.png'); // Load fuel image
   pixelFont = loadFont('assets/Silkscreen-Regular.ttf'); // Load pixel font
 }
