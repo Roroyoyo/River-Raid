@@ -7,23 +7,30 @@ let boats = [];
 let fuels = [];
 let gameOver = false;
 
-let planeImg; // 1. Add a variable for the image
+let planeImg
+let heliImg // 1. Add a variable for the image
+let boatImg
+let fuelImg
 let pixelFont; // Add at the top
 let fuelMeter = 1; // 1 = full, 0 = empty
 
 function preload() {
-  planeImg = loadImage('assets/Plane.png'); // 2. Load the image
+  planeImg = loadImage('assets/Plane.png')
+  heliImg = loadImage('assets/helicopter.gif'); // 2. Load the image
+  boatImg = loadImage('assets/Boat.png');
+  fuelImg = loadImage('assets/Fuel.png'); // Load fuel image
   pixelFont = loadFont('assets/Silkscreen-Regular.ttf'); // Load pixel font
 }
 
 function setup() {
   createCanvas(400, 400);
+  noSmooth(); // <-- Add this line to turn off anti-aliasing for images
 
   plane = {
     x: 200,
     y: 350,
-    w: 30,
-    h: 30
+    w: 32,
+    h: 32
   };
 
   laser = {
@@ -38,9 +45,9 @@ function setup() {
     helis.push({
       x: random(0, 400),
       y: random(0, 200), // Only top half
-      w: 30,
-      h: 30,
-      vy: 2.5
+      w: 32,
+      h: 32,
+      vy: 2
     });
   }
 
@@ -48,13 +55,13 @@ function setup() {
     boats.push({
       x: random(0, 400),
       y: random(0, 200), // Only top half
-      w: 30,
-      h: 30,
-      vy: 3
+      w: 32,
+      h: 12,
+      vy: 4
     });
   }
 
-  for (let i = 0; i < 3; i++) {
+  for (let i = 0; i < 2; i++) {
     fuels.push({
       x: random(0, 400),
       y: random(0, 200), // Only top half
@@ -144,19 +151,19 @@ function draw() {
   // Draw helis
   fill('green');
   for (let heli of helis) {
-    rect(heli.x, heli.y, heli.w, heli.h);
+    image(heliImg, heli.x, heli.y, heli.w, heli.h);
   }
 
   // Draw boats
   fill('orange');
   for (let boat of boats) {
-    rect(boat.x, boat.y, boat.w, boat.h);
+    image(boatImg, boat.x, boat.y, boat.w, boat.h);
   }
 
   // Draw fuels
   fill('yellow');
   for (let fuel of fuels) {
-    rect(fuel.x, fuel.y, fuel.w, fuel.h);
+    image(fuelImg,fuel.x, fuel.y, fuel.w, fuel.h);
   }
 
   // Move laser
@@ -170,7 +177,7 @@ function draw() {
   }
 
   // Move helis and boats
-  let speedBoost = frameCount / (60 * 5); // similar to World.seconds/5
+  let speedBoost = frameCount / (60 * 5);
   for (let heli of helis) {
     heli.y += heli.vy + speedBoost;
     if (heli.y > height) {
@@ -276,18 +283,18 @@ function restartGame() {
     helis.push({
       x: random(0, 400),
       y: random(0, 200), // Only top half
-      w: 30,
-      h: 30,
-      vy: 2.5
+      w: 32,
+      h: 32,
+      vy: 2
     });
   }
   for (let i = 0; i < 2; i++) {
     boats.push({
       x: random(0, 400),
       y: random(0, 200), // Only top half
-      w: 30,
-      h: 30,
-      vy: 3
+      w: 32,
+      h: 32,
+      vy: 4
     });
   }
   for (let i = 0; i < 3; i++) {
