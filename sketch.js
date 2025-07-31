@@ -293,7 +293,7 @@ function restartGame() {
       x: random(0, 400),
       y: random(0, 200), // Only top half
       w: 32,
-      h: 32,
+      h: 12,
       vy: 4
     });
   }
