@@ -294,7 +294,7 @@ function restartGame() {
       y: random(0, 200), // Only top half
       w: 32,
       h: 12,
-      vy: 4
+      vy: 2
     });
   }
   for (let i = 0; i < 3; i++) {
