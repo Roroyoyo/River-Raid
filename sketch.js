@@ -224,6 +224,16 @@ function draw() {
         laser.x = plane.x + plane.w / 2 - laser.w / 2;
       }
     }
+    // Check collisions: laser with fuels (remove fuel if hit by laser)
+    for (let fuel of fuels) {
+      if (collideRectRect(laser.x, laser.y, laser.w, laser.h, fuel.x, fuel.y, fuel.w, fuel.h)) {
+        fuel.y = 0;
+        fuel.x = random(0, width);
+        laser.vy = 0;
+        laser.y = plane.y;
+        laser.x = plane.x + plane.w / 2 - laser.w / 2;
+      }
+    }
   }
 
   // Check collisions: plane with helis/boats
