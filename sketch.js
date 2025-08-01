@@ -258,7 +258,7 @@ function draw() {
     }
   }
 
-  score = kill * 5;
+  score = kill * 5 + framecount/60; // Score based on kills and time survived;
 }
 
 // --- Only keep spacebar logic in keyPressed ---
