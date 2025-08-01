@@ -13,6 +13,10 @@ let boatImg
 let fuelImg
 let pixelFont; // Add at the top
 let fuelMeter = 1; // 1 = full, 0 = empty
+let meterWidth = 300;
+let meterHeight = 16;
+let meterX
+let meterY
 
 function preload() {
   planeImg = loadImage('assets/Plane.png')
@@ -25,7 +29,9 @@ function preload() {
 function setup() {
   createCanvas(400, 400);
   noSmooth(); // <-- Add this line to turn off anti-aliasing for images
-
+meterX = (width - meterWidth) / 2;
+ meterY = height - meterHeight - 10;
+  
   plane = {
     x: 200,
     y: 350,
@@ -103,10 +109,6 @@ function draw() {
   }
 
   // Draw fuel meter at bottom of screen
-  let meterWidth = 300;
-  let meterHeight = 16;
-  let meterX = (width - meterWidth) / 2;
-  let meterY = height - meterHeight - 10;
   stroke(255);
   noFill();
   rect(meterX, meterY, meterWidth, meterHeight);
@@ -258,7 +260,8 @@ function draw() {
     }
   }
 
-  score = kill * 5 + frameCount/60; // Score based on kills and time survived;
+  score = floor(kill * 5 + frameCount / 60); // Score based on kills and time survived;
+  console.log (frameCount)
 }
 
 // --- Only keep spacebar logic in keyPressed ---
